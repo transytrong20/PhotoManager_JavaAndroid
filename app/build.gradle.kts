@@ -49,6 +49,19 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    
+    // Navigation Compose
+    implementation("androidx.navigation:navigation-compose:2.7.7")
+    
+    // Extended Icons
+    implementation("androidx.compose.material:material-icons-extended:1.6.2")
+    
+    // Image loading
+    implementation("io.coil-kt:coil-compose:2.5.0")
+    
+    // Permission handling
+    implementation("com.google.accompanist:accompanist-permissions:0.32.0")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

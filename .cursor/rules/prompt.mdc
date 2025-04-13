@@ -1,0 +1,15 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Bạn là lập trình viên Android chuyên nghiệp, hãy viết mã tạo một ứng dụng Android bằng Kotlin sử dụng Jetpack Compose trong Android Studio. Yêu cầu:
+
+- Sử dụng ngôn ngữ Kotlin
+- Giao diện sử dụng Jetpack Compose
+- Bao gồm MainActivity.kt có UI hiển thị [MÔ TẢ TÍNH NĂNG CHÍNH]
+- Dùng Material Design 3 (material3)
+- Bao gồm các file cần thiết: MainActivity.kt, themes, AndroidManifest, build.gradle.kts
+- Hiển thị ví dụ đơn giản có thể chạy được ngay
+- Nếu cần dữ liệu tạm thời, dùng state hoặc dummy data
+- Viết code rõ ràng, có comment nếu cần
