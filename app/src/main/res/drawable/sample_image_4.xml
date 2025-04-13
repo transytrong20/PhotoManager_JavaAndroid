@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+    
+    <!-- Nền -->
+    <path
+        android:fillColor="#FFCCBC"
+        android:pathData="M0,0h200v200h-200z" />
+        
+    <!-- Núi xa -->
+    <path
+        android:fillColor="#90A4AE"
+        android:pathData="M0,80l20,-10l30,20l40,-30l30,10l40,-20l40,30l0,120l-200,0z" />
+    
+    <!-- Núi gần -->
+    <path
+        android:fillColor="#607D8B"
+        android:pathData="M0,100l40,-20l30,10l20,-10l50,30l60,-40l0,130l-200,0z" />
+        
+    <!-- Nhà -->
+    <path
+        android:fillColor="#BF360C"
+        android:pathData="M70,120l60,0l0,40l-60,0z" />
+    <path
+        android:fillColor="#E64A19"
+        android:pathData="M60,120l80,0l-40,-30z" />
+    <path
+        android:fillColor="#6D4C41"
+        android:pathData="M90,140l20,0l0,20l-20,0z" />
+        
+    <!-- Cây -->
+    <path
+        android:fillColor="#33691E"
+        android:pathData="M150,130l-10,-20l20,0z" />
+    <path
+        android:fillColor="#33691E"
+        android:pathData="M150,110l-15,-20l30,0z" />
+    <path
+        android:fillColor="#33691E"
+        android:pathData="M150,90l-20,-20l40,0z" />
+    <path
+        android:fillColor="#3E2723"
+        android:pathData="M145,130l10,0l0,30l-10,0z" />
+</vector> 

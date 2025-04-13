@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+    
+    <!-- Nền -->
+    <path
+        android:fillColor="#03A9F4"
+        android:pathData="M0,0h200v200h-200z" />
+        
+    <!-- Sóng biển -->
+    <path
+        android:fillColor="#0288D1"
+        android:pathData="M0,120c20,-10 40,10 60,-5c20,-15 40,10 60,-5c20,-15 40,10 60,-5c20,-15 40,10 60,-5l0,100l-240,0z" />
+    
+    <!-- Bờ biển -->
+    <path
+        android:fillColor="#FFC107"
+        android:pathData="M0,150c30,-10 60,10 100,-5c40,-15 70,0 100,-5l0,60l-200,0z" />
+        
+    <!-- Mặt trời -->
+    <path
+        android:fillColor="#FFEB3B"
+        android:pathData="M150,40a20,20 0,1 0,0.00001,0z" />
+    
+    <!-- Cây dừa -->
+    <path
+        android:fillColor="#795548"
+        android:pathData="M30,140l5,-20l-3,0l3,-20l-3,0l3,-20l10,0l3,20l-3,0l3,20l-3,0l5,20z" />
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M30,60c0,0 -15,10 -10,20c5,10 40,10 30,-5c-10,-15 -20,-15 -20,-15z" />
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M50,65c0,0 15,0 15,10c0,10 -35,15 -30,0c5,-15 15,-10 15,-10z" />
+</vector> 

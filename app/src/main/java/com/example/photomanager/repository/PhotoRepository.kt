@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
 import com.example.photomanager.model.Album
+import com.example.photomanager.model.DummyData
 import com.example.photomanager.model.Photo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -18,20 +19,47 @@ import java.util.Date
 
 class PhotoRepository(private val context: Context) {
     
+    // Cho biết có sử dụng dữ liệu mẫu hay không
+    private var useDummyData = true
+    
+    // Lưu trữ dữ liệu mẫu
+    private val dummyPhotos by lazy { DummyData.generateDummyPhotos(context) }
+    private val dummyAlbums by lazy { DummyData.generateDummyAlbums(dummyPhotos) }
+    
     /**
      * Lấy tất cả ảnh từ bộ nhớ thiết bị
      */
     fun getAllPhotos(): Flow<List<Photo>> = flow {
-        val photos = queryPhotos()
-        emit(photos)
+        try {
+            val photos = queryPhotos()
+            if (photos.isNotEmpty()) {
+                useDummyData = false
+                emit(photos)
+            } else {
+                emit(dummyPhotos)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            emit(dummyPhotos)
+        }
     }.flowOn(Dispatchers.IO)
     
     /**
      * Lấy tất cả album từ bộ nhớ thiết bị
      */
     fun getAllAlbums(): Flow<List<Album>> = flow {
-        val albums = queryAlbums()
-        emit(albums)
+        try {
+            val albums = queryAlbums()
+            if (albums.isNotEmpty()) {
+                useDummyData = false
+                emit(albums)
+            } else {
+                emit(dummyAlbums)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            emit(dummyAlbums)
+        }
     }.flowOn(Dispatchers.IO)
     
     /**
@@ -39,8 +67,17 @@ class PhotoRepository(private val context: Context) {
      * @param albumName Tên album cần lấy ảnh
      */
     fun getPhotosByAlbum(albumName: String): Flow<List<Photo>> = flow {
-        val photos = queryPhotosByAlbum(albumName)
-        emit(photos)
+        try {
+            if (useDummyData) {
+                emit(dummyPhotos.filter { it.albumName == albumName })
+            } else {
+                val photos = queryPhotosByAlbum(albumName)
+                emit(photos)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            emit(dummyPhotos.filter { it.albumName == albumName })
+        }
     }.flowOn(Dispatchers.IO)
     
     /**
@@ -49,6 +86,11 @@ class PhotoRepository(private val context: Context) {
      */
     suspend fun deletePhoto(photo: Photo): Boolean = withContext(Dispatchers.IO) {
         try {
+            if (useDummyData) {
+                // Giả lập xóa ảnh thành công
+                return@withContext true
+            }
+            
             val deletedRows = context.contentResolver.delete(
                 photo.uri,
                 null,
@@ -68,6 +110,11 @@ class PhotoRepository(private val context: Context) {
      */
     suspend fun updatePhoto(photo: Photo, newName: String? = null, newAlbumName: String? = null): Boolean = withContext(Dispatchers.IO) {
         try {
+            if (useDummyData) {
+                // Giả lập cập nhật ảnh thành công
+                return@withContext true
+            }
+            
             val contentValues = ContentValues().apply {
                 newName?.let { put(MediaStore.Images.Media.DISPLAY_NAME, it) }
                 // Trên thực tế, việc di chuyển ảnh giữa các album phức tạp hơn,
